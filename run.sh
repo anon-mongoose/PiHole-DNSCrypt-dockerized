@@ -66,7 +66,7 @@ then
 	read choice
 	case $choice in
 		[yYoO]*) echo -e "\n-> Updating PiHole Docker container..."
-			 sed -i "17c\ \ \ \ image: pihole/pihole:v$pihole_version" $docker_compose_file_path
+			 sed -i "18c\ \ \ \ image: pihole/pihole:v$pihole_version" $docker_compose_file_path
 			 echo "-> Updated !";;
 		[nN]*) echo "Do not hesitate to edit the docker-compose file with the version you want.";;
 		*) echo "-> Choice incorrect. Exiting."
