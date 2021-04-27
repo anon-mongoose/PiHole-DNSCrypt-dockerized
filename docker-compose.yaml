@@ -21,8 +21,8 @@ services:
         ipv4_address: 10.53.53.200
         ipv6_address: 2001:3984:3989::20
     ports:
-      - "53530:53/tcp"
-      - "53530:53/udp"
+      - "53:53/tcp"
+      - "53:53/udp"
       #- "80:80/tcp"
       #- "443:443/tcp"
     environment:
@@ -35,6 +35,8 @@ services:
        - './etc-pihole/:/etc/pihole/'
        - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
     restart: unless-stopped
+    depends_on:
+      - home_dnscrypt
 
 
 
