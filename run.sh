@@ -9,6 +9,35 @@ docker_compose_file_path="./docker-compose.yaml"
 
 
 #=================================================================
+# Step 0: Check script arguments
+#=================================================================
+
+if [ "$#" -eq 0 ]; then
+	force_update="false"
+elif [ "$#" -eq 1 ]; then
+	if [ "$1" = "-f" -o "$1" = "--force" ]; then
+	  force_update="true"
+	elif [ "$1" = "-h" -o "$1" = "--help" ]; then
+		echo "This script will install/update the PiHole and DNSCrypt proxy docker containers to the latest version automatically."
+		echo "Options list:"
+		echo "  -h, --help     Print this help message."
+		echo "  -f, --force    Will force updates if any is availabled"
+		echo -e "\nYou can copy, modify and distribute them as you wish, but do not forget to link this GitHub repository.\n"
+		exit 0
+	else
+		echo "Error: bad arguments."
+		echo -e "To print the help message, use  $0 -h\n"
+		exit 1
+  fi
+
+else
+	echo "Error: bad arguments."
+	echo -e "To print the help message, use  $0 -h\n"
+	exit 1
+fi
+
+
+#=================================================================
 # Step 1: Getting PiHole and DNSCrypt last versions
 #=================================================================
 
@@ -54,10 +83,10 @@ fi
 # Step 3: Updating docker-compose file and DNSCrypt Dockerfile
 #=================================================================
 
-if [ "$pihole_uptodate" -eq 1 ]
+if [ "$pihole_uptodate" -eq 1 -a "$force_update" = "false" ]
 then
 	echo -e "\n----------------------------------------------------------------------------"
-	echo -e "\nThe last version availabled for PiHole Docker conatainer is $pihole_version\n"
+	echo -e "\nThe last version availabled for PiHole Docker container is $pihole_version\n"
 	echo "The PiHole Docker container(s) currently installed is/are the following:"
 	docker images | grep 'pihole/pihole'
 
@@ -76,7 +105,7 @@ fi
 
 
 
-if [ "$dnscrypt_uptodate" -eq 1 ]
+if [ "$dnscrypt_uptodate" -eq 1 -a "$force_update" = "false" ]
 then
 	echo -e "\n----------------------------------------------------------------------------"
 	echo -e "\nThe last version availabled for DNSCrypt Proxy is $dnscrypt_version\n"
@@ -106,7 +135,7 @@ fi
 if [ "$pihole_uptodate" -eq 1 -o "$dnscrypt_uptodate" -eq 1  ]
 then
 	echo -e "\n----------------------------------------------------------------------------"
-	echo -e "\-> Redeploying updated containers....\n"
+	echo -e "\n-> Redeploying updated containers....\n"
 	docker-compose -f $docker_compose_file_path down
 	docker-compose -f $docker_compose_file_path up
 	echo -e "\n-> Containers updated !"
