@@ -118,8 +118,8 @@ then
 	case $choice in
 		[yYoO]*) echo -e "\n-> Updating DNSCrypt Proxy Docker container..."
 			 sed -i "7c\ \ \ \ image: dnscrypt-custom:v$dnscrypt_version" $docker_compose_file_path
-			 sed -i "9cRUN wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$dnscrypt_version/dnscrypt-proxy-linux_x86_64-$dnscrypt_version.tar.gz" $dnscrypt_dockerfile_path
-			 sed -i "10cRUN tar xvzf dnscrypt-proxy-linux_x86_64-$dnscrypt_version.tar.gz" $dnscrypt_dockerfile_path
+			 sed -i "14cRUN wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$dnscrypt_version/dnscrypt-proxy-linux_x86_64-$dnscrypt_version.tar.gz" $dnscrypt_dockerfile_path
+			 sed -i "15cRUN tar xvzf dnscrypt-proxy-linux_x86_64-$dnscrypt_version.tar.gz" $dnscrypt_dockerfile_path
 			 echo "-> Updated !";;
 		[nN]*) echo "Do not hesitate to edit the DNSCrypt Dockerfile file with the version you want.";;
 		*) echo "-> Choice incorrect. Exiting."

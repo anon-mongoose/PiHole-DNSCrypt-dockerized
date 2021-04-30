@@ -11,9 +11,9 @@ RUN useradd dnscryptuser
 
 
 # Installing Dnscrypt
-RUN wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.0.45/dnscrypt-proxy-linux_x86_64-2.0.45.tar.gz && \
-    tar xvzf dnscrypt-proxy-linux_x86_64-2.0.45.tar.gz && \
-    mv linux-x86_64/ /usr/local/dnscrypt-proxy && \
+RUN wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.0.45/dnscrypt-proxy-linux_x86_64-2.0.45.tar.gz
+RUN tar xvzf dnscrypt-proxy-linux_x86_64-2.0.45.tar.gz
+RUN mv linux-x86_64/ /usr/local/dnscrypt-proxy && \
     chown dnscryptuser:dnscryptuser -R /usr/local/dnscrypt-proxy
 
 
