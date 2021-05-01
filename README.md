@@ -69,7 +69,7 @@ The following screenshot shows **network traffic filtered on DNS** protocol wher
 ![DNS traffic without proxies](./Screenshots/dnstraffic_noproxy.png)
 
 The following screenshot shows **network traffic** of the same requested domains but using proxies. **No DNS requests shows up**, they are encrypted (TLSv1.2 packets presence).
-![DNS traffic without proxies](./Screenshots/dnstraffic_proxy.png)
+![DNS traffic with proxies](./Screenshots/dnstraffic_proxy.png)
 
 ---
 
