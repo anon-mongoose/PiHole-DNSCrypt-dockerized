@@ -68,7 +68,7 @@ Second, you may ensure the DNS request are **not sent in plain text**. I used **
 The following screenshot shows **network traffic filtered on DNS** protocol where we see all the domains in **plain text** I requested with `dig` (*eff.org*, *example.com*, *qwant.com* and *github.com*):
 ![DNS traffic without proxies](./Screenshots/dnstraffic_noproxy.png)
 
-The following screenshot shows **network traffic** of the same requested domains but using proxies. **No DNS requests shows up**, they are encrypted (TLSv1.2 packets presence).
+The following screenshot shows **network traffic** of the same requested domains but using proxies. **No DNS requests show up**, they are encrypted (TLSv1.2 packets presence).
 ![DNS traffic with proxies](./Screenshots/dnstraffic_proxy.png)
 
 ---
@@ -88,7 +88,7 @@ The following screenshot shows **network traffic** of the same requested domains
 ---
 
 ## Mentions
-This project use the awesome work of the Pi-Hole and DNSCrypt development teams. Do not hesitate to support them with donations and by visiting their website!
+This project use the awesome work of the Pi-Hole and DNSCrypt development teams. Do not hesitate to support them with donations and by visiting their websites!
 - https://pi-hole.net/
 - https://pi-hole.net/donate/
 - https://github.com/pi-hole/pi-hole
