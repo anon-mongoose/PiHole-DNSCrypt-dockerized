@@ -59,7 +59,7 @@ The following screenshot is a Standard test realized **with proxies**. This time
 
 ###### Network traffic analysis
 Second, you may ensure the DNS request are **not sent in plain text**. I used **Wireshark** to capture the network traffic when requesting some domains with the `dig`. My test was:
-1. **Deploy the proxies** on my machine with the `bash run.sh -f` command.
+1. **Deploy the proxies** on your machine with the `bash run.sh -f` command.
 2. **Launch a network traffic recorder**, in this case Wireshark.
 3. **Request some domains** ***without using the proxies*** with the dig command: `~$ dig eff.org`
 4. **Request some domains** ***using the proxies*** with the dig command: `~$ dig @127.0.0.1 -p 53 eff.org`
