@@ -21,7 +21,7 @@ This goal of this project is to **setup and deploy** the two **proxies** embedde
 
 #### Files description
 
-- `run.sh`: updates and deploys automatically the two proxies.
+- `run.sh`: updates and deploys automatically the two proxies. It will get the latest version of Pi-Hole and DNSCrypt, update the configuration files and redeploy the updated containers.
 - `docker-compose.yaml`: holds the containers configuration.
   - You may want to change the Pi-Hole exposed ports on your machine.
   - The admin web interface port is not exposed because the environment variables are not loaded for unknown reason, Thus anyone may access it.
@@ -44,9 +44,29 @@ When a DNS request comes into the host machine, actions will be the following:
 6. Pi-Hole container returns the DNS response.
 
 
+#### Usage
+
+- To print the **help message** of the run.sh script, use the `-h` or `--help` options:   
+`$ sudo bash run.sh -h`   
+`$ sudo bash run.sh --help`
+
+- If you want to **install** or **update** the proxies ***automatically***, use one of the following command from this cloned repository:  
+`$ sudo bash run.sh -f`   
+`$ sudo bash run.sh --force`
+
+- If you want to **install** or **update** the proxies ***manually*** (actions are prompted), use the following command from this cloned repository:  
+`$ sudo bash run.sh`
+
+- If you want to **deploy** the proxies ***without checking for an update***, use the following command from this cloned repository:  
+`$ sudo docker-compose up`
+
+- If you want to **remove** the proxies, use the following command from this cloned repository:  
+`$ sudo docker-compose down`
+
+
 #### How to ensure the proxies work correctly ?
 
-###### Dnsleaktest Website
+##### Dnsleaktest Website
 First, you should visit the website **https://www.dnsleaktest.com** and click on "*Standard test*". It will then display the DNS servers your machine is requesting to. Thus, it will allow you to ensure the servers are **not always the same** and that they support DNSCrypt, DoH and DNSSEC.
 
 The following screenshot is a Standard test realized **without proxies**. You may note that a single DNS server is listed.
@@ -57,7 +77,7 @@ The following screenshot is a Standard test realized **with proxies**. This time
 
 **Notes**: to perform this test, make sure to deploy the proxies **AND** to configure your machine to use `localhost` as DNS resolver (and make sure to specify the good port if it is not the default one 53).
 
-###### Network traffic analysis
+##### Network traffic analysis
 Second, you may ensure the DNS requests are **not sent in plain text**. I used **Wireshark** to capture the network traffic when requesting some domains with the `dig`. My test was:
 1. **Deploy the proxies** on your machine with the `bash run.sh -f` command.
 2. **Launch a network traffic recorder**, in this case Wireshark.
