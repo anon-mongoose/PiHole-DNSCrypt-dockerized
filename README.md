@@ -1,6 +1,6 @@
 # Pi-Hole & DNSCrypt proxy dockerized
 
-Nowadays, most people don't feel safe using HTTP when surfing on the web, they prefer using HTTPS instead that **encrypts* and **authenticates** their Internet communications, and they are right! But before using HTTPS when visiting a website by typing its **domain name** (e.g.: www.eff.org), your browser needs to know the **IP address** of the server it is trying to connect to.
+Nowadays, most people don't feel safe using HTTP when surfing on the web, they prefer using HTTPS instead that **encrypts** and **authenticates** their Internet communications, and they are right! But before using HTTPS when visiting a website by typing its **domain name** (e.g.: www.eff.org), your browser needs to know the **IP address** of the server it is trying to connect to.
 
 And here the **DNS protocol** comes in, it will find the IP address linked to a particular domain name. **Problem**:  the DNS protocol is not secure by default and the domain you are looking for will be visible in plain text on the networks. But fortunately, there is a way to solve this problem:
 - **DNSCrypt**: A dedicated protocol to encrypt, authenticate and anonymize DNS traffic.
@@ -102,7 +102,7 @@ The following screenshot shows **network traffic** of the same requested domains
 ## Dependencies
 
 - `docker`
-- `docker-Compose`
+- `docker-compose`
 - an Internet connection
 
 ---
