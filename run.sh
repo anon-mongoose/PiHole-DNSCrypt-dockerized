@@ -42,7 +42,18 @@ fi
 #=================================================================
 
 pihole_version=$(curl -s https://github.com/pi-hole/docker-pi-hole/releases/latest | grep -o "\([0-9][0-9]\|[0-9]\).\([0-9][0-9]\|[0-9]\)\(.\([0-9][0-9]\|[0-9]\)\)\{0,1\}")
-dnscrypt_version=$(curl -s https://github.com/DNSCrypt/dnscrypt-proxy/releases/latest | grep -o "\([0-9][0-9]\|[0-9]\).\([0-9][0-9]\|[0-9]\)\(.\([0-9][0-9]\|[0-9]\)\)\{0,1\}")
+
+dnscrypt_version="none"
+version_found=0
+for version in $(curl -s https://github.com/DNSCrypt/dnscrypt-proxy/releases/ | grep '/DNSCrypt/dnscrypt-proxy/tree/' | cut -d"\"" -f2 | cut -d"/" -f5)
+do
+  if [ "$(echo $version | grep -c -m 1 '-')" == "0" -a $version_found -eq 0 ]; then
+    dnscrypt_version=$version
+    version_found=1
+  fi
+done
+
+#dnscrypt_version=$(curl -s https://github.com/DNSCrypt/dnscrypt-proxy/releases/latest | grep -o "\([0-9][0-9]\|[0-9]\).\([0-9][0-9]\|[0-9]\)\(.\([0-9][0-9]\|[0-9]\)\)\{0,1\}")
 
 echo "PiHole latest version:          $pihole_version"
 echo -e "DNSCrypt Proxy latest version:  $dnscrypt_version\n"
@@ -129,7 +140,7 @@ fi
 
 
 #=================================================================
-# Step 4: Redploying updated containers
+# Step 4: Redeploying updated containers
 #=================================================================
 
 if [ "$pihole_uptodate" -eq 1 -o "$dnscrypt_uptodate" -eq 1  ]
