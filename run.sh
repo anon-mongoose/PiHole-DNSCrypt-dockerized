@@ -148,7 +148,7 @@ then
 	echo -e "\n----------------------------------------------------------------------------"
 	echo -e "\n-> Redeploying updated containers....\n"
 	docker-compose -f ${docker_compose_file_path} down
-	docker-compose -f ${docker_compose_file_path} up
+	docker-compose -d -f ${docker_compose_file_path} up # if you want to see log details, remove the '-d' option.
 	echo -e "\n-> Containers updated !"
 fi
 
