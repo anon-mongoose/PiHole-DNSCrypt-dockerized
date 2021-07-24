@@ -64,6 +64,9 @@ When a DNS request comes into the host machine, actions will be the following:
 `$ sudo docker-compose down`
 
 
+**Notes:** you may want to define the machine's architecture where you will deploy the proxies by editing the variable `arch` in the `run.sh` script line 9. By default it is set to *x86_64*. For a **Raspberry Pi**, you should set `arm`.
+
+
 #### How to ensure the proxies work correctly ?
 
 ##### Dnsleaktest Website

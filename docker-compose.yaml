@@ -27,7 +27,7 @@ services:
       #- "443:443/tcp"
     environment:
       TZ: 'Europe/Paris'
-      WEBPASSWORD: 'strong_password_(G3fvca#AZDEFR€3µ$d:qd$aq?fe' # to change manually, plus the web admin interface is not exposed
+      WEBPASSWORD: 'strong_password_(G3fvca#AZDEFR€3µ.d:qdMaq-fe' # to change manually, plus the web admin interface is not exposed
       PIHOLE_DNS_: 10.53.53.100#5353;2001:3984:3989::20#53530
     dns:
       - 127.0.0.1
