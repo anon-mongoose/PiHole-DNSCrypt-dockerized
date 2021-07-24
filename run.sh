@@ -130,6 +130,7 @@ then
 			 sed -i "7c\ \ \ \ image: dnscrypt-custom:v${dnscrypt_version}" ${docker_compose_file_path}
 			 sed -i "14cRUN wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${dnscrypt_version}/dnscrypt-proxy-linux_${arch}-${dnscrypt_version}.tar.gz" ${dnscrypt_dockerfile_path}
 			 sed -i "15cRUN tar xvzf dnscrypt-proxy-linux_${arch}-${dnscrypt_version}.tar.gz" ${dnscrypt_dockerfile_path}
+			 sed -i "16cRUN mv linux-${arch}/ /usr/local/dnscrypt-proxy" ${dnscrypt_dockerfile_path}
 			 echo "-> Updated !";;
 		[nN]*) echo "Do not hesitate to edit the DNSCrypt Dockerfile file with the version you want.";;
 		*) echo "-> Choice incorrect. Exiting."
