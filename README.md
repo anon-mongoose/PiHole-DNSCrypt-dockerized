@@ -43,8 +43,6 @@ When a DNS request comes into the host machine, actions will be the following:
 5. DNSCrypt container returns DNS response to Pi-Hole.
 6. Pi-Hole container returns the DNS response.
 
-**Notes:** you may want to define the machine's architecture where you will deploy the proxies by editing the variable `arch` in the `run.sh` script line 9. By default it is set to *x86_64*.
-
 
 #### Usage
 
@@ -64,6 +62,9 @@ When a DNS request comes into the host machine, actions will be the following:
 
 - If you want to **remove** the proxies, use the following command from this cloned repository:  
 `$ sudo docker-compose down`
+
+
+**Notes:** you may want to define the machine's architecture where you will deploy the proxies by editing the variable `arch` in the `run.sh` script line 9. By default it is set to *x86_64*. For a **Raspberry Pi**, you should set `arm`.
 
 
 #### How to ensure the proxies work correctly ?
