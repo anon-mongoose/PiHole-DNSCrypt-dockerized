@@ -42,7 +42,7 @@ fi
 # Step 1: Getting PiHole and DNSCrypt last versions
 #=================================================================
 
-pihole_version=$(curl -s https://github.com/pi-hole/docker-pi-hole/releases/latest | grep -o "\([0-9][0-9]\|[0-9]\).\([0-9][0-9]\|[0-9]\)\(.\([0-9][0-9]\|[0-9]\)\)\{0,1\}")
+pihole_version=$(echo $(curl -s https://github.com/pi-hole/docker-pi-hole/releases/latest) | cut -d'"' -f2 | cut -d'/' -f8)
 
 dnscrypt_version="none"
 version_found=0
@@ -105,7 +105,7 @@ then
 	read choice
 	case ${choice} in
 		[yYoO]*) echo -e "\n-> Updating PiHole Docker container..."
-			 sed -i "18c\ \ \ \ image: pihole/pihole:v${pihole_version}" ${docker_compose_file_path}
+			 sed -i "18c\ \ \ \ image: pihole/pihole:${pihole_version}" ${docker_compose_file_path}
 			 echo "-> Updated !";;
 		[nN]*) echo "Do not hesitate to edit the docker-compose file with the version you want.";;
 		*) echo "-> Choice incorrect. Exiting."
