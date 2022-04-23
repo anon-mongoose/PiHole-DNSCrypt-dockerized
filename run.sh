@@ -23,7 +23,7 @@ elif [ "$#" -eq 1 ]; then
 		echo "Options list:"
 		echo "  -h, --help     Print this help message."
 		echo "  -f, --force    Will force updates if any is availabled"
-		echo -e "\nYou can copy, modify and distribute them as you wish, but do not forget to link this GitHub repository.\n"
+		echo -e "\nYou can copy, modify and distribute this scrip as you wish, but do not forget to link this GitHub repository.\n"
 		exit 0
 	else
 		echo "Error: bad arguments."
