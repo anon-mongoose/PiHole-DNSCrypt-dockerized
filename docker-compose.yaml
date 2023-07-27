@@ -4,7 +4,7 @@ services:
 
   home_dnscrypt:
     build: ./dnscrypt
-    image: dnscrypt-custom:v2.0.45
+    image: dnscrypt-custom:v2.1.4
     container_name: dnscrypt
     networks:
       dns_net:
@@ -15,7 +15,7 @@ services:
 
   home_pihole:
     container_name: pihole
-    image: pihole/pihole:v5.8.1
+    image: pihole/pihole:2023.05.2
     networks:
       dns_net:
         ipv4_address: 10.53.53.200
