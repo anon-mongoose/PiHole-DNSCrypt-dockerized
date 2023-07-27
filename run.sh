@@ -42,7 +42,7 @@ fi
 # Step 1: Getting PiHole and DNSCrypt last versions
 #=================================================================
 
-pihole_version=$(echo $(curl -s https://github.com/pi-hole/docker-pi-hole/releases/latest) | cut -d'"' -f2 | cut -d'/' -f8)
+pihole_version=$(echo $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pi-hole/docker-pi-hole/releases/latest) | cut -d'/' -f8)
 
 dnscrypt_version="none"
 version_found=0
