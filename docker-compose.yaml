@@ -4,7 +4,7 @@ services:
 
   home_dnscrypt:
     build: ./dnscrypt
-    image: dnscrypt-custom:v2.1.4
+    image: dnscrypt-custom:v2.1.5
     container_name: dnscrypt
     networks:
       dns_net:
