@@ -54,9 +54,10 @@ do
   fi
 done
 
-echo "PiHole latest version:          ${pihole_version}"
-echo -e "DNSCrypt Proxy latest version:  ${dnscrypt_version}\n"
-
+echo "PiHole latest version:                ${pihole_version}"
+echo "DNSCrypt Proxy latest version:        ${dnscrypt_version}"
+echo "DNSCrypt Proxy architecture defined:  ${arch}"
+echo -e "(Note: Make sure this architecture works on the host machine. Otherwise, update the 'arch' variable at the top of ${0})\n"
 
 
 #=================================================================
@@ -68,7 +69,7 @@ echo -e "DNSCrypt Proxy latest version:  ${dnscrypt_version}\n"
 pihole_uptodate=1
 if [ $(docker images | grep 'pihole/pihole' | grep -o "${pihole_version}") ]
 then
-	echo "The latest version of PiHole Docker container is up to date.           Nothing to do."
+	echo "The latest version of PiHole Docker image is up to date.           Nothing to do."
 	pihole_uptodate=0
 else
 	echo "The latest version of Pihole should be installed."
@@ -81,7 +82,7 @@ fi
 dnscrypt_uptodate=1
 if [ $(docker images | grep 'dnscrypt-custom' | grep -o "${dnscrypt_version}") ]
 then
-	echo "The latest version of DNSCrypt Proxy Docker container is up to date.   Nothing to do."
+	echo "The latest version of DNSCrypt Proxy Docker image is up to date.   Nothing to do."
 	dnscrypt_uptodate=0
 else
 	echo "The latest version of DNSCrypt Proxy should be installed."
