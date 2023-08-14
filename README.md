@@ -98,15 +98,30 @@ The following screenshot shows **network traffic** of the same requested domains
 
 ## Next improvements
 
-- Containers security hardenning.
+- Containers security hardening.
 
 ---
 
 ## Dependencies
 
+- `bash`
 - `docker`
 - `docker-compose`
-- an Internet connection
+- An Internet connection
+
+---
+
+## Troubleshoots
+
+### Contaiers keep restarting
+Containers ususally restart when they encounter an error. In order to find which one exactly, take a look of their logs with the command below:
+```bash
+sudo docker container logs CONTAINER_NAME
+```
+
+`dnscrypt` container may crash if the binary's architecture (defined in `arch` variable at the top of `run.sh` file) is not compatible with your machine arcitecture. Update the dedicated variable to match yours.
+
+`pihole` container may crash for several reasons. Check out its logs to better understand what makes it crash.
 
 ---
 
