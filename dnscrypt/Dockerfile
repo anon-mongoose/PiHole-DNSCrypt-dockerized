@@ -11,8 +11,8 @@ RUN useradd dnscryptuser
 
 
 # Installing Dnscrypt
-RUN wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.4/dnscrypt-proxy-linux_x86_64-2.1.4.tar.gz
-RUN tar xvzf dnscrypt-proxy-linux_x86_64-2.1.4.tar.gz
+RUN wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.5/dnscrypt-proxy-linux_x86_64-2.1.5.tar.gz
+RUN tar xvzf dnscrypt-proxy-linux_x86_64-2.1.5.tar.gz
 RUN mv linux-x86_64/ /usr/local/dnscrypt-proxy
 RUN chown dnscryptuser:dnscryptuser -R /usr/local/dnscrypt-proxy
 
@@ -34,7 +34,7 @@ EXPOSE 53530/tcp
 
 # Healthcheck
 HEALTHCHECK --interval=1m --timeout=5s --retries=2 \
-  CMD dig @127.0.0.1 -p 5353 eff.org || exit 1
+  CMD dig +short +norecurse +retry=0 @127.0.0.1 -p 5353 eff.org || exit 1
 
 
 USER dnscryptuser
