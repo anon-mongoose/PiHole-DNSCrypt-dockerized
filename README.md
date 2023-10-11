@@ -113,7 +113,7 @@ The following screenshot shows **network traffic** of the same requested domains
 
 ## Troubleshoots
 
-### Contaiers keep restarting
+### Containers keep restarting
 Containers ususally restart when they encounter an error. In order to find which one exactly, take a look of their logs with the command below:
 ```bash
 sudo docker container logs CONTAINER_NAME
