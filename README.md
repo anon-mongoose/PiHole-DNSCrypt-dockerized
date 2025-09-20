@@ -58,10 +58,10 @@ When a DNS request comes into the host machine, actions will be the following:
 `$ sudo bash run.sh`
 
 - If you want to **deploy** the proxies ***without checking for an update***, use the following command from this cloned repository:  
-`$ sudo docker-compose up`
+`$ sudo bash run.sh -u`
 
 - If you want to **remove** the proxies, use the following command from this cloned repository:  
-`$ sudo docker-compose down`
+`$ sudo bash run.sh -d`
 
 
 **Notes:** you may want to define the machine's architecture where you will deploy the proxies by editing the variable `arch` in the `run.sh` script line 9. By default it is set to *x86_64*. For a **Raspberry Pi**, you should set `arm`.
