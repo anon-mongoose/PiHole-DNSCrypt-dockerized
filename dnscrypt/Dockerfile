@@ -1,5 +1,5 @@
-# Debian based
-FROM debian:10.9-slim
+# Docker based
+FROM debian:12.12-slim
 
 
 # Installing dependencies
@@ -11,8 +11,8 @@ RUN useradd dnscryptuser
 
 
 # Installing Dnscrypt
-RUN wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.5/dnscrypt-proxy-linux_x86_64-2.1.5.tar.gz
-RUN tar xvzf dnscrypt-proxy-linux_x86_64-2.1.5.tar.gz
+RUN wget https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.14/dnscrypt-proxy-linux_x86_64-2.1.14.tar.gz
+RUN tar xvzf dnscrypt-proxy-linux_x86_64-2.1.14.tar.gz
 RUN mv linux-x86_64/ /usr/local/dnscrypt-proxy
 RUN chown dnscryptuser:dnscryptuser -R /usr/local/dnscrypt-proxy
 
