@@ -1,34 +1,37 @@
-version: "3.5"
-
 services:
-
   home_dnscrypt:
     build: ./dnscrypt
-    image: dnscrypt-custom:v2.1.5
+    image: dnscrypt-custom:v2.1.14
+    pull_policy: never
     container_name: dnscrypt
     networks:
       dns_net:
         ipv4_address: 10.53.53.100
         ipv6_address: 2001:3984:3989::10
+    # Uncomment if you want to access the web UI
+    #ports:
+    #  - "8080:8080/tcp"
     restart: unless-stopped
 
 
   home_pihole:
     container_name: pihole
-    image: pihole/pihole:2023.05.2
+    image: pihole/pihole:2025.08.0
     networks:
       dns_net:
         ipv4_address: 10.53.53.200
         ipv6_address: 2001:3984:3989::20
+    # You may want to update the networks section depending on your needs
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "5353:53/tcp"
+      - "5353:53/udp"
+      # Uncomment if you want to access the web UI
       #- "80:80/tcp"
       #- "443:443/tcp"
     environment:
       TZ: 'Europe/Paris'
-      WEBPASSWORD: 'strong_password_(G3fvca#AZDEFR€3µ.d:qdMaq-fe' # to change manually, plus the web admin interface is not exposed
-      PIHOLE_DNS_: 10.53.53.100#5353;2001:3984:3989::20#53530
+      FTLCONF_webserver_api_password: 'strong_password_(G3fvca#AZDEFR€3µ.d:qdMaq-fe' # to change manually, plus the web admin interface is not exposed
+      FTLCONF_dns_upstreams: 10.53.53.100#5353;2001:3984:3989::20#53530
     dns:
       - 127.0.0.1
     volumes:
@@ -37,7 +40,6 @@ services:
     restart: unless-stopped
     depends_on:
       - home_dnscrypt
-
 
 
 networks:
